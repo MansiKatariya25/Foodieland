@@ -1,20 +1,21 @@
 import { useState } from 'react'
-import Navbar from './Components/Navbar'
-import Hero from './Components/Hero'
-import Category from './Components/Category'
-import Cards from './Components/Cards'
-import Footer from './Components/Footer'
+import  Main from './Components/Recipe/Main'
+import Home from './Components/HomePage/Home'
+import {BrowserRouter,Route,Routes} from 'react-router-dom'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <>
-      <Navbar />
-      <Hero />
-      <Category />
-      <Cards />
-      <Footer />
+    
+ <BrowserRouter>
+ <Routes>
+  <Route path="/recipe" element={<Main/>}/>
+  <Route path="/" element={<Home/>}/>
+ </Routes>
+ </BrowserRouter>
+     
     </>
   )
 }

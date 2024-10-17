@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { api } from "../utils/api";
+import { api } from "../../utils/api";
 
 function Cards() {
   const [data, setdata] = useState();
