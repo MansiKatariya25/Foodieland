@@ -8,7 +8,7 @@ function Cards() {
   useEffect(() => {
     const getRecipe = async () => {
       try {
-        const response = await axios.get(`${api}/getRecipe`);
+        const response = await axios.get(`${api}getRecipe`);
         setdata(response.data);
       } catch (error) {
         console.log(error);

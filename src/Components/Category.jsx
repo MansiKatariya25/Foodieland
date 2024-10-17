@@ -8,7 +8,7 @@ function Category() {
   useEffect(() => {
     const getCategory = async () => {
       try {
-        const response = await axios.get(`${api}/getCategory`);
+        const response = await axios.get(`${api}getCategory`);
         setdata(response.data);
         // console.log(data);
       } catch (error) {
