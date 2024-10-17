@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { api } from "../utils/api";
 
 function Cards() {
   const [data, setdata] = useState();
@@ -7,7 +8,7 @@ function Cards() {
   useEffect(() => {
     const getRecipe = async () => {
       try {
-        const response = await axios.get("http://localhost:8800/getRecipe");
+        const response = await axios.get(`${api}/getRecipe`);
         setdata(response.data);
       } catch (error) {
         console.log(error);
