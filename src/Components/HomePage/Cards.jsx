@@ -1,21 +1,18 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { api } from "../../utils/api";
+import { DataProvider } from "../../App";
+import { useNavigate } from "react-router-dom";
+
 
 function Cards() {
-  const [data, setdata] = useState();
+ 
+  const {dataRec} = useContext(DataProvider)
+  const useNav = useNavigate()
+ const handlePageChange = (id)=>{
+  useNav(`/recipe/${id}`)
 
-  useEffect(() => {
-    const getRecipe = async () => {
-      try {
-        const response = await axios.get(`${api}getRecipe`);
-        setdata(response.data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    getRecipe();
-  }, []);
+ }
 
   return (
     <div className="p-20 h-[180vh] font-Inter mt-[5%]">
@@ -29,17 +26,17 @@ function Cards() {
         </div>
       </div>
       <div className="flex flex-wrap justify-evenly h-[100vh]">
-      {data ? (
-        data.map((items, i) => {
+      {dataRec ? (
+        dataRec.map((items, i) => {
           return (
             <div
               className="bg-[#E7FAFE] w-[26%] h-[55%] rounded-3xl flex flex-col justify-between items-center mt-[5%] p-4"
-              key={i}
+              key={i} onClick={()=>handlePageChange(items.id)}
             >
               <div className="w-[21vw]">
                 <img src={items.image} className="rounded-3xl" />
                 <img
-                  src="./logos/like.png"
+                  src="/logos/like.png"
                   width={"30px"}
                   className=" absolute translate-x-[18vw] -translate-y-[27vh]"
                 />

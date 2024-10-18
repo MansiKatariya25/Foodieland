@@ -23,7 +23,7 @@ function Hero() {
           </div>
           <div className="w-full flex justify-between">
             <div className="flex justify-between w-[28%]">
-              <img src="./logos/man.svg" />
+              <img src="/logos/man.svg" />
               <div className="text-sm  flex flex-col justify-center font-bold">
                 <h2>John Smith</h2>
                 <h2>15 March 2022</h2>
@@ -35,11 +35,11 @@ function Hero() {
           </div>
         </div>
         <div className="w-2/4 h-full">
-          <img src="./logos/right.svg" className="h-full max-w-none" alt="" />
+          <img src="/logos/right.svg" className="h-full max-w-none" alt="" />
         </div>
         <div>
           <img
-            src="./logos/Badge.svg"
+            src="/logos/Badge.svg"
             width={"120px"}
             className="absolute -translate-x-[49vw]  translate-y-10 p-2"
           />

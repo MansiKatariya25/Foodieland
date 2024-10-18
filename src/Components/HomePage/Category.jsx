@@ -1,22 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { api } from "../../utils/api";
+import { DataProvider } from "../../App";
 
 function Category() {
-  const [data, setdata] = useState();
-
-  useEffect(() => {
-    const getCategory = async () => {
-      try {
-        const response = await axios.get(`${api}getCategory`);
-        setdata(response.data);
-        // console.log(data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    getCategory();
-  }, []);
+  const {dataCat} = useContext(DataProvider)
   return (
     <div className="p-10 font-Inter mt-6">
       <div className="flex justify-between">
@@ -26,8 +14,8 @@ function Category() {
         </button>
       </div>
       <div className="flex justify-evenly items-center mt-10">
-      {data ? (
-        data.map((items, i) => {
+      {dataCat ? (
+        dataCat.map((items, i) => {
           return (
             
               <div key={i} className={`flex flex-col items-center p-3 w-[15%] bg-gradient-to-t from-[#7082461A] to-[#7082461A]/2 rounded-3xl`}>

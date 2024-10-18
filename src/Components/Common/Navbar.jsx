@@ -17,9 +17,9 @@ function Navbar() {
           <li>About Us</li>
         </ul>
         <div className="flex justify-evenly w-[20%]">
-          <img src="./logos/fb.svg" />
-          <img src="./logos/twi.svg" />
-          <img src="./logos/ig.svg" />
+          <img src="/logos/fb.svg" />
+          <img src="/logos/twi.svg" />
+          <img src="/logos/ig.svg" />
         </div>
       </div>
     </>

@@ -13,7 +13,7 @@ function Footer() {
 
           <div className="flex items-center">
             <img
-              src="./logos/left.png"
+              src="/logos/left.png"
               className="w-[300px] h-[250px] -translate-x-[9vw] translate-y-[4vh]"
             />
 
@@ -29,7 +29,7 @@ function Footer() {
             </div>
 
             <img
-              src="./logos/right.png"
+              src="/logos/right.png"
               className="w-[300px] h-[270px] translate-x-[9vw] translate-y-[3vh]"
             />
           </div>
@@ -54,9 +54,9 @@ function Footer() {
       <div className="flex justify-between w-[90vw]">
         <p className="translate-x-[38vw] p-4 text-lg">© 2020 Flowbase. Powered by Webflow</p>
         <div className="flex ">
-          <img src="./logos/fb.svg" width={"10px"} className="mx-4"/>
-          <img src="./logos/twi.svg" width={"20px"} className="mx-4"/>
-          <img src="./logos/ig.svg" width={"20px"} className="mx-4"/>
+          <img src="/logos/fb.svg" width={"10px"} className="mx-4"/>
+          <img src="/logos/twi.svg" width={"20px"} className="mx-4"/>
+          <img src="/logos/ig.svg" width={"20px"} className="mx-4"/>
         </div>
     </div>
     </>
