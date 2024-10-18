@@ -48,7 +48,7 @@ function Details() {
           </div>
         </div>
 
-        <div className="mt-10 flex justify-evenly ">
+        <div className="mt-10 flex justify-evenly h-[100vh]">
           <div>
             <img src="./logos/imag.png" className="rounded-3xl" />
           </div>
