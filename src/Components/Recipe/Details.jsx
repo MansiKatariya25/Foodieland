@@ -52,7 +52,7 @@ function Details() {
           <div>
             <img src="./logos/imag.png" className="rounded-3xl" />
           </div>
-          <div className="bg-[#E7FAFE] w-[30vw] rounded-3xl p-8 flex flex-col ">
+          <div className="bg-[#E7FAFE] w-[30vw] h-auto rounded-3xl p-8 flex flex-col ">
             <p className="text-2xl font-bold"> Nutrition Information</p>
             <div className="flex justify-between my-6">
               <p>Calories</p>

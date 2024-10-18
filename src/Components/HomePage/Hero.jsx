@@ -34,8 +34,8 @@ function Hero() {
             </button>
           </div>
         </div>
-        <div className="w-2/4">
-          <img src="./logos/right.svg" alt="" />
+        <div className="w-2/4 h-full">
+          <img src="./logos/right.svg" className="h-full max-w-none" alt="" />
         </div>
         <div>
           <img
