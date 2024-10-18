@@ -2,7 +2,7 @@ import React from "react";
 
 function Details() {
   return (
-    <div className="font-Inter p-16 flex flex-col justify-between">
+    <div className="font-Inter p-16 flex flex-col justify-between h-[100vh]">
       <div className="">
         <p className="text-5xl mt-10 font-bold">Health Japanese Fried Rice</p>
         <div className="w-[100vw] flex justify-between mt-10 ">
@@ -48,11 +48,11 @@ function Details() {
           </div>
         </div>
 
-        <div className="mt-10 flex justify-evenly h-[100vh]">
+        <div className="mt-10 flex justify-evenly ">
           <div>
             <img src="./logos/imag.png" className="rounded-3xl" />
           </div>
-          <div className="bg-[#E7FAFE] w-[30vw] h-[82vh] rounded-3xl p-8 flex flex-col ">
+          <div className="bg-[#E7FAFE] w-[30vw] rounded-3xl p-8 flex flex-col ">
             <p className="text-2xl font-bold"> Nutrition Information</p>
             <div className="flex justify-between my-6">
               <p>Calories</p>
