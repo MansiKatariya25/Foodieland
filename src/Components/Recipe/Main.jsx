@@ -7,7 +7,6 @@ import Ingredients from './Ingredients'
 function Main() {
     return (
         <>
-         
             <Navbar/>
             <Details/>
             <Ingredients/>

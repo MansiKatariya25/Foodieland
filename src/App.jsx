@@ -4,6 +4,7 @@ import Home from './Components/HomePage/Home'
 import {BrowserRouter,Route,Routes} from 'react-router-dom'
 import axios from 'axios'
 import { api } from './utils/api'
+import RecipeList from './Components/RecipeList/RecipeList'
 
 export const DataProvider = createContext()
 function App() {
@@ -42,6 +43,7 @@ function App() {
  <BrowserRouter>
  <Routes>
   <Route path="/recipe/:id" element={<Main/>}/>
+  <Route path="recipe" element={<RecipeList/>}/>
   <Route path="/" element={<Home/>}/>
  </Routes>
  </BrowserRouter>

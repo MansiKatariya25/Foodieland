@@ -15,44 +15,42 @@ function Ingredients() {
       setSelectedMainDish([...selectedMainDish, index]);
     }else{
       let data = await handleuntick(selectedMainDish,index)
-      console.log(data,selectedMainDish)
       setSelectedMainDish(data)
     }
   };
 
-  const handleSauceClick = (index) => {
+  const handleSauceClick = async (index) => {
     if (!selectedSauce.includes(index)) {
       setSelectedSauce([...selectedSauce, index]);
     }
+    else{
+      let data = await handleuntick(selectedSauce,index)
+      setSelectedSauce(data)
+    }
   };
 
-  const handleDirectionClick = (index) => {
+  const handleDirectionClick = async (index) => {
     if (!selectedDirections.includes(index)) {
       setSelectedDirections([...selectedDirections, index]);
+    }
+    else{
+      let data = await handleuntick(selectedDirections,index)
+      setSelectedDirections(data)
     }
   };
   
   const handleuntick = async (items,index) =>{
     let newData = []
 
-    items.filter((value, index) => {
+    items.filter((value, i) => {
       if(value==index){
 
-        console.log(value,"index :",index)
       }else{
-        newData.push(value)
-       
-        
+        newData.push(value) 
       }
-
-     
-   
-
     })
     return newData
   }
- 
-
 
   return (
     <div className="font-Inter p-16 w-[98vw] ">

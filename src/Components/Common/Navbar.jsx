@@ -10,7 +10,7 @@ function Navbar() {
           <Link to="/">
             <li className="transition-colors duration-200 hover:text-red-400 hover:font-bold">Home</li>
           </Link>
-          <li className="transition-colors duration-200 hover:text-red-400 hover:font-bold">Recipes</li>
+          <Link to="/recipe"><li className="transition-colors duration-200 hover:text-red-400 hover:font-bold">Recipes</li></Link>
           <li className="transition-colors duration-200 hover:text-red-400 hover:font-bold">Contact</li>
           <li className="transition-colors duration-200 hover:text-red-400 hover:font-bold">About Us</li>
         </ul>
