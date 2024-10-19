@@ -30,8 +30,8 @@ function Cards() {
         dataRec.map((items, i) => {
           return (
             <div
-              className="bg-[#E7FAFE] w-[26%] h-[55%] rounded-3xl flex flex-col justify-between items-center mt-[5%] p-4"
-              key={i} onClick={()=>handlePageChange(items.id)}
+              className="bg-[#E7FAFE] w-[26%] h-[55%] rounded-3xl flex flex-col justify-between items-center mt-[5%] p-4 transition-all ease-in-out duration-300 hover:scale-105 "
+              key={i} onClick={()=>handlePageChange(items.id)} 
             >
               <div className="w-[21vw]">
                 <img src={items.image} className="rounded-3xl" />
@@ -39,7 +39,7 @@ function Cards() {
                   src="/logos/like.png"
                   width={"30px"}
                   className=" absolute translate-x-[18vw] -translate-y-[27vh]"
-                />
+                /> 
                 <div>
                   <p className="text-xl font-bold my-5">{items.title}</p>
                 </div>

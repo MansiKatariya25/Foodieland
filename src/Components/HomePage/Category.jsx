@@ -18,7 +18,7 @@ function Category() {
         dataCat.map((items, i) => {
           return (
             
-              <div key={i} className={`flex flex-col items-center p-3 w-[15%] bg-gradient-to-t from-[#7082461A] to-[#7082461A]/2 rounded-3xl`}>
+              <div key={i} className={`flex flex-col items-center p-3 w-[15%] bg-gradient-to-t from-[#7082461A] to-[#7082461A]/2 rounded-3xl transition-all ease-in-out duration-300 hover:scale-105` }>
                 <img src={items.image} height={"200px"} width={"90px"} />
                 <h2 className="pt-3">{items.name}</h2>
               </div>

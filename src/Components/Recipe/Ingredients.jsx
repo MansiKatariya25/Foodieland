@@ -1,11 +1,58 @@
-import React from "react";
+import React, { useState } from "react";
 import { useContext } from "react";
 import { DataProvider } from "../../App";
 
 function Ingredients() {
   const { dataRec, setThis, thisRecipe } = useContext(DataProvider);
 
-  console.log(thisRecipe);
+  const [selectedMainDish, setSelectedMainDish] = useState([]);
+  const [selectedSauce, setSelectedSauce] = useState([]);
+  const [selectedDirections, setSelectedDirections] = useState([]);
+
+  const handleMainDishClick = async (index) => {
+    
+    if (!selectedMainDish.includes(index)) {
+      setSelectedMainDish([...selectedMainDish, index]);
+    }else{
+      let data = await handleuntick(selectedMainDish,index)
+      console.log(data,selectedMainDish)
+      setSelectedMainDish(data)
+    }
+  };
+
+  const handleSauceClick = (index) => {
+    if (!selectedSauce.includes(index)) {
+      setSelectedSauce([...selectedSauce, index]);
+    }
+  };
+
+  const handleDirectionClick = (index) => {
+    if (!selectedDirections.includes(index)) {
+      setSelectedDirections([...selectedDirections, index]);
+    }
+  };
+  
+  const handleuntick = async (items,index) =>{
+    let newData = []
+
+    items.filter((value, index) => {
+      if(value==index){
+
+        console.log(value,"index :",index)
+      }else{
+        newData.push(value)
+       
+        
+      }
+
+     
+   
+
+    })
+    return newData
+  }
+ 
+
 
   return (
     <div className="font-Inter p-16 w-[98vw] ">
@@ -18,8 +65,16 @@ function Ingredients() {
               ? thisRecipe.maindish.map((items, i) => {
                   return (
                     <>
-                      <div className="flex p-4">
-                        <img src="/logos/black.png" width={"22px"} />
+                      <div className="flex p-4" key={i}>
+                        <img
+                          src={
+                            selectedMainDish.includes(i)
+                              ? "/logos/black.png"
+                              : "/logos/circle.svg"
+                          }
+                          width={"20px"}
+                          onClick={() => handleMainDishClick(i)}
+                        />
                         <p className="ml-4">{items}</p>
                       </div>
                       <hr />
@@ -32,8 +87,16 @@ function Ingredients() {
               ? thisRecipe.sauce.map((items, i) => {
                   return (
                     <>
-                      <div className="flex p-4">
-                        <img src="/logos/circle.svg" width={"20px"} />
+                      <div className="flex p-4" key={i}>
+                        <img
+                          src={
+                            selectedSauce.includes(i)
+                              ? "/logos/black.png"
+                              : "/logos/circle.svg"
+                          }
+                          width={"20px"}
+                          onClick={() => handleSauceClick(i)}
+                        />
                         <p className="ml-4">{items}</p>
                       </div>
                       <hr />
@@ -94,28 +157,36 @@ function Ingredients() {
       <div className="w-[60vw]  mb-24">
         <p className="text-6xl font-bold p-8 mt-4">Directions</p>
         <div className="flex flex-col p-4">
-          {
-            thisRecipe? thisRecipe.direction.map((items,i)=>{
-                return(
+          {thisRecipe
+            ? thisRecipe.direction.map((items, i) => {
+                return (
                   <>
-                  <div className="flex ">
-                  <img src="/logos/circle.svg" width={"20px"} />
-          <p className="ml-4 text-2xl">{i+1 +" . "+items.title}</p>
-        </div>
-        <p className="ml-14 p-2 text-xl text-gray-400">
-         {items.direction}
-        </p>
-        <hr className=" ml-10 my-10" />
+                    <div className="flex " key={i}>
+                      <img
+                        src={
+                          selectedDirections.includes(i)
+                            ? "/logos/black.png"
+                            : "/logos/circle.svg"
+                        }
+                        width={"20px"}
+                        onClick={() => handleDirectionClick(i)}
+                      />
+                      <p className="ml-4 text-2xl">
+                        {i + 1 + " . " + items.title}
+                      </p>
+                    </div>
+                    <p className="ml-14 p-2 text-xl text-gray-400">
+                      {items.direction}
+                    </p>
+                    <hr className=" ml-10 my-10" />
                   </>
                 );
-            }):''}
-
-          
-        
+              })
+            : ""}
+        </div>
       </div>
     </div>
-    </div>
-);
+  );
 }
 
 export default Ingredients;

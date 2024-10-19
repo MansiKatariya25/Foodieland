@@ -14,10 +14,10 @@ function Hero() {
             tempor incididunt ut labore et dolore magna aliqut enim ad minim{" "}
           </h3>
           <div>
-            <button className="rounded-full bg-slate-300 p-2 w-[120px] mr-3">
+            <button className="rounded-full bg-slate-300 p-2 w-[120px] mr-3 transform transition-transform duration-200 hover:scale-105">
               30 minutes
             </button>
-            <button className="rounded-full bg-slate-300 p-2 w-[120px] ">
+            <button className="rounded-full bg-slate-300 p-2 w-[120px] transform transition-transform duration-200 hover:scale-105">
               Chicken
             </button>
           </div>
@@ -29,7 +29,7 @@ function Hero() {
                 <h2>15 March 2022</h2>
               </div>
             </div>
-            <button className="rounded-xl bg-black text-white p-4 w-[190px] text-lg ">
+            <button className="rounded-xl bg-black text-white p-4 w-[190px] text-lg transform transition-transform duration-200 hover:scale-105">
               View Recipes
             </button>
           </div>
