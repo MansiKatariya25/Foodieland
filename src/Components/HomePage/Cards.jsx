@@ -33,7 +33,7 @@ function Cards() {
             i <=5 ?
             <div
               className="bg-[#E7FAFE] w-[26%] h-[55%] rounded-3xl flex flex-col justify-between  mt-[5%] p-4 transition-all ease-in-out duration-300 hover:scale-105 "
-              key={i} onClick={()=>handlePageChange(items.id)} 
+              key={i} onClick={()=>handlePageChange(items._id)} 
             >
               <div className="w-[21vw]">
                 <img src={items.image} className="rounded-3xl" />

@@ -6,14 +6,11 @@ function Details() {
   const {id} = useParams()
   const {dataRec,setThis} = useContext(DataProvider)
   const thisRecipe = dataRec?dataRec.filter((value, index) => {
-    return value.id==id?value:''
+    return value._id==id?value:''
   }):''
 
   const data = thisRecipe?thisRecipe[0] :''
   setThis(data)
-
-
-
 
   return (
     <div className="font-Inter p-16 flex flex-col justify-between">
