@@ -26,7 +26,7 @@ function List() {
    }
 
   return (
-    <div className='flex flex-col items-center'>
+    <div className='flex flex-col items-center relative top-28'>
         <div className="bg-white p-4 w-[30vw] rounded-xl h-24 flex items-center justify-between ">
               <input
                 type="text"

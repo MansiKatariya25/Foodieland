@@ -1,9 +1,60 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
 
 function Hero() {
+  const textRef = useRef();
+  const textRef2 = useRef();
+  const divRef = useRef();
+  gsap.registerPlugin(ScrollTrigger);
+  useEffect(() => {
+    gsap.fromTo(
+      textRef.current,
+      {
+        x: "-20vw",
+      },
+      {
+        x: "0vw",
+        duration: 1,
+        ease: "power1.out",
+      }
+    );
+    gsap.fromTo(
+      textRef2.current,
+      {
+        x: "50vw",
+      },
+      {
+        x: "0vw",
+        duration: 1,
+        ease: "power1.out",
+      }
+    );
+    gsap.fromTo(
+      divRef.current,
+      {
+        y: "0vh",
+      },
+      {
+        y: "-50vh",
+        duration: 4,
+        ease: "power1.inOut",
+        scrollTrigger: {
+          trigger: divRef.current,
+          start: "bottom 90%",
+          end: "bottom 0%",
+          scrub: true,
+        },
+      }
+    );
+  }, []);
+
   return (
-    <div className="w-[100vw] h-[90vh] flex p-2 justify-center">
-      <div className="w-[90%] h-full flex ">
+    <div
+      ref={divRef}
+      className="w-[100vw] h-[90vh] flex p-2 justify-center relative top-32"
+    >
+      <div ref={textRef} className="w-[90%] h-full flex">
         <div className="w-2/4 h-full p-6 bg-[#E7FAFE] font-Inter rounded-l-[30px] flex flex-col justify-evenly">
           <button className="bg-white rounded-full p-2 w-[150px]">
             Hot Recipes
@@ -34,8 +85,8 @@ function Hero() {
             </button>
           </div>
         </div>
-        <div className="w-2/4 h-full">
-          <img src="/logos/right.svg" className="h-full max-w-none" alt="" />
+        <div ref={textRef2} className="w-2/4 h-full">
+          <img src="/logos/right.svg" className="h-full max-w-none" />
         </div>
         <div>
           <img
