@@ -9,4 +9,13 @@ body {
     @apply p-0 m-0;
    
 }
+input{
+    @apply p-2 rounded-md outline-none;
+}
+
+.authBg{
+    background-image: url(https://images.pexels.com/photos/1640773/pexels-photo-1640773.jpeg);
+    background-position:center;
+    background-size:cover;
+}
 

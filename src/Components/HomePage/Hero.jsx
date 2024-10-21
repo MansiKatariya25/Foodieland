@@ -29,7 +29,7 @@ function Hero() {
                 <h2>15 March 2022</h2>
               </div>
             </div>
-            <button className="rounded-xl bg-black text-white p-4 w-[190px] text-lg transform transition-transform duration-200 hover:scale-105">
+            <button className="rounded-xl cursor-pointer bg-black text-white p-4 w-[190px] text-lg transform transition-transform duration-200 hover:scale-105">
               View Recipes
             </button>
           </div>

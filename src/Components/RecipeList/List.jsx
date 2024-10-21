@@ -27,7 +27,7 @@ function List() {
 
   return (
     <div className='flex flex-col items-center'>
-        <div className="bg-white p-4 w-[30vw] rounded-xl h-24 flex items-center justify-between">
+        <div className="bg-white p-4 w-[30vw] rounded-xl h-24 flex items-center justify-between ">
               <input
                 type="text"
                 value={query}
@@ -46,7 +46,7 @@ function List() {
         data.map((items, i) => {
           return (
             <div
-              className="bg-[#E7FAFE] w-[26%] h-[55%] rounded-3xl flex flex-col flex-wrap justify-between items-center mt-[5%] p-4 transition-all ease-in-out duration-300 hover:scale-105 "
+              className="bg-[#E7FAFE] w-[26%] h-[55%] cursor-pointer rounded-3xl flex flex-col flex-wrap justify-between items-center mt-[5%] p-4 transition-all ease-in-out duration-300 hover:scale-105 "
               key={i} onClick={()=>handlePageChange(items._id)} 
             >
               <div className="w-[21vw]">

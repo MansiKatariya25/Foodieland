@@ -5,6 +5,8 @@ import {BrowserRouter,Route,Routes} from 'react-router-dom'
 import axios from 'axios'
 import { api } from './utils/api'
 import RecipeList from './Components/RecipeList/RecipeList'
+import Login from './Components/Auth/Login'
+import Signup from './Components/Auth/Signup'
 
 export const DataProvider = createContext()
 function App() {
@@ -33,7 +35,7 @@ function App() {
       } catch (error) {
         console.log(error);
       }
-    };
+    };  
     getCategory();
   }, []);
 
@@ -45,6 +47,8 @@ function App() {
   <Route path="/recipe/:id" element={<Main/>}/>
   <Route path="recipe" element={<RecipeList/>}/>
   <Route path="/" element={<Home/>}/>
+  <Route path="/Auth/login" element={<Login/>}/>
+  <Route path="/Auth/signup" element={<Signup/>}/>
  </Routes>
  </BrowserRouter>
   </DataProvider.Provider>   

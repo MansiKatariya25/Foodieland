@@ -32,7 +32,7 @@ function Cards() {
           return (
             i <=5 ?
             <div
-              className="bg-[#E7FAFE] w-[26%] h-[55%] rounded-3xl flex flex-col justify-between  mt-[5%] p-4 transition-all ease-in-out duration-300 hover:scale-105 "
+              className="bg-[#E7FAFE] w-[26%] h-[55%] rounded-3xl flex flex-col justify-between cursor-pointer mt-[5%] p-4 transition-all ease-in-out duration-300 hover:scale-105 "
               key={i} onClick={()=>handlePageChange(items._id)} 
             >
               <div className="w-[21vw]">
