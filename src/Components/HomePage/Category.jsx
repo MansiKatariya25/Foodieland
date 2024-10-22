@@ -19,7 +19,7 @@ function Category() {
         scrollTrigger: {
           trigger: catRef.current,
           start: "top 90%",
-          end: "bottom 50%",
+          end: "bottom 70%",
           scrub: true,
         },
       }
