@@ -8,11 +8,16 @@ import RecipeList from "./Components/RecipeList/RecipeList";
 import Login from "./Components/Auth/Login";
 import Signup from "./Components/Auth/Signup";
 
+
 export const DataProvider = createContext();
 function App() {
   const [dataRec, setdataRec] = useState(null);
   const [dataCat, setdataCat] = useState(null);
   const [thisRecipe, setThis] = useState(null);
+
+
+  
+
 
   useEffect(() => {
     const getRecipe = async () => {

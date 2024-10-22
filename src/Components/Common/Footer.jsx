@@ -1,14 +1,25 @@
-import React from "react";
+import React, { useEffect } from "react";
+import Aos from "aos";
+import "aos/dist/aos.css"; 
 
 function Footer() {
+  useEffect(() => {
+    Aos.init({ duration: 1000 }); // Initialize AOS
+  }, []);
+
   return (
     <>
-      <div className="w-full h-[60vh] font-Inter flex justify-center ">
-        <div className=" flex flex-col items-center justify-evenly bg-[#E7FAFE] rounded-3xl p-4 overflow-hidden">
+      <div className="w-full h-[60vh] font-Inter flex justify-center">
+        <div
+          data-aos="zoom-in" // This will scale the element
+          data-aos-duration="1000"
+          data-aos-easing="ease-in-out"
+          className="flex flex-col h-[70vh] items-center justify-evenly bg-[#E7FAFE] rounded-3xl p-4 overflow-hidden"
+        >
           <p className="text-6xl font-bold my-4">Deliciousness to your inbox</p>
           <p className="text-xl w-[60%] text-center text-slate-400">
             Lorem ipsum dolor sit amet, consectetuipisicing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqut enim ad minim{" "}
+            tempor incididunt ut labore et dolore magna aliqua enim ad minim{" "}
           </p>
 
           <div className="flex items-center">
@@ -35,11 +46,12 @@ function Footer() {
           </div>
         </div>
       </div>
+
       <div className="w-full flex justify-between font-Inter p-24">
         <div className="w-[30vw]">
           <p className="text-3xl font-Lobster my-4">Foodieland.</p>
           <p className="text-gray-500">
-            Lorem ipsum dolor sit amet, consectetuipisicing elit,{" "}
+            Lorem ipsum dolor sit amet, consectetuipisicing elit,
           </p>
         </div>
         <div className="w-[70vw] flex justify-end p-14">
@@ -50,15 +62,18 @@ function Footer() {
           </ul>
         </div>
       </div>
-      <hr className="w-[90vw] -mt-20 ml-10"/>
+
+      <hr className="w-[90vw] -mt-20 ml-10" />
       <div className="flex justify-between w-[90vw]">
-        <p className="translate-x-[38vw] p-4 text-lg">© 2020 Flowbase. Powered by Webflow</p>
-        <div className="flex ">
-          <img src="/logos/fb.svg" width={"10px"} className="mx-4"/>
-          <img src="/logos/twi.svg" width={"20px"} className="mx-4"/>
-          <img src="/logos/ig.svg" width={"20px"} className="mx-4"/>
+        <p className="translate-x-[38vw] p-4 text-lg">
+          © 2020 Flowbase. Powered by Webflow
+        </p>
+        <div className="flex">
+          <img src="/logos/fb.svg" width={"10px"} className="mx-4" />
+          <img src="/logos/twi.svg" width={"20px"} className="mx-4" />
+          <img src="/logos/ig.svg" width={"20px"} className="mx-4" />
         </div>
-    </div>
+      </div>
     </>
   );
 }
