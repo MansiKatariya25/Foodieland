@@ -11,8 +11,8 @@ function Login() {
   return (
     <>
       <Navbar />
-      <div className="authBg w-[100vw] h-[90vh] flex flex-col justify-evenly items-center  font-Inter mb-10">
-        <div className="bg-white relative items-center w-[50%] shadow-lg rounded-lg px-5 py-12 mx-auto md:px-12 lg:px-20 max-w-7xl">
+      <div className="authBg w-[100vw] h-[90vh] flex flex-col justify-evenly items-center font-Inter  mb-10">
+        <div className="bg-white relative items-center w-[50%] mt-28 shadow-lg rounded-lg px-5 py-12 mx-auto md:px-12 lg:px-20 max-w-7xl">
           <h1 className="text-3xl font-Lobster text-center p-4">
             Login Now to explore tasty recipe's and foodie's around you!
           </h1>
