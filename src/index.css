@@ -19,4 +19,6 @@ input{
 li {
     @apply hover:border-b-2 border-black
 }
-
+button,input{
+    @apply font-Inter
+}

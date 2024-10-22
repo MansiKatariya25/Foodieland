@@ -1,6 +1,10 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState,useRef } from 'react'
 import { DataProvider } from "../../App";
 import { useNavigate } from "react-router-dom";
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 function List() {
     const [query,setquery] = useState()
@@ -25,19 +29,44 @@ function List() {
     setData(searched)
    }
 
+   const listRef = useRef([]);
+  useEffect(() => {
+    listRef.current.forEach((ref, index) => {
+      if (ref) {
+        gsap.fromTo(
+          ref,
+          {
+            opacity: 0,
+          },
+          {
+            opacity: 1,
+            duration: 4,
+            ease: "power1.out",
+            scrollTrigger: {
+              trigger: ref,
+              start: "top 70%",
+              end: "bottom 40%",
+              scrub: true,
+            },
+          }
+        );
+      }
+    });
+  }, [dataRec]);
+
   return (
-    <div className='flex flex-col items-center relative top-28'>
-        <div className="bg-white p-4 w-[30vw] rounded-xl h-24 flex items-center justify-between ">
+    <div className='flex flex-col items-center relative top-28 mb-[50vh]'>
+        <div className="bg-white p-2  w-[30vw] rounded-xl  flex items-center border justify-between ">
               <input
                 type="text"
                 value={query}
                 placeholder="Search Recipe here......"
-                className="p-2 rounded-xl outline-none"
+                className="p-2 rounded-lg outline-none w-full"
                 onChange={(e)=>{
                     setquery(e.target.value)
                 }}
               />
-              <button className="bg-black text-white p-4 rounded-xl" onClick={handleSearch}>
+              <button className="bg-black text-white p-2 w-24  rounded-lg" onClick={handleSearch}>
                 Search
               </button>
             </div>
@@ -45,7 +74,7 @@ function List() {
       {data&&dataRec ? (
         data.map((items, i) => {
           return (
-            <div
+            <div ef={(el) => (listRef.current[i] = el)}
               className="bg-[#E7FAFE] w-[26%] h-[55%] cursor-pointer rounded-3xl flex flex-col flex-wrap justify-between items-center mt-[5%] p-4 transition-all ease-in-out duration-300 hover:scale-105 "
               key={i} onClick={()=>handlePageChange(items._id)} 
             >

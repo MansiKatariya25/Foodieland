@@ -4,14 +4,16 @@ import "aos/dist/aos.css";
 
 function Footer() {
   useEffect(() => {
-    Aos.init({ duration: 1000 }); // Initialize AOS
+    Aos.init({ duration: 1000 });
   }, []);
 
   return (
-    <>
-      <div className="w-full h-[60vh] font-Inter flex justify-center">
+    <div>
+    {/* <div className="relative top-96"></div> */}
+    <div>
+      <div className="w-full h-[60vh] font-Inter flex justify-center ">
         <div
-          data-aos="zoom-in" // This will scale the element
+          data-aos="zoom-in" 
           data-aos-duration="1000"
           data-aos-easing="ease-in-out"
           className="flex flex-col h-[70vh] items-center justify-evenly bg-[#E7FAFE] rounded-3xl p-4 overflow-hidden"
@@ -74,7 +76,8 @@ function Footer() {
           <img src="/logos/ig.svg" width={"20px"} className="mx-4" />
         </div>
       </div>
-    </>
+      </div>
+    </div>
   );
 }
 

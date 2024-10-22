@@ -74,7 +74,7 @@ function Navbar() {
         </ul>
         <div ref={logoRef} className="flex justify-evenly w-[20%]">
           <Link to="/Auth/login">
-            <button className="px-4 py-2 border-none bg-black text-white text-lg rounded-full cursor-pointer">
+            <button className="p-1  w-[80px] border-none bg-black text-white text-lg rounded-lg cursor-pointer">
               Login
             </button>
           </Link>
