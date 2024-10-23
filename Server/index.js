@@ -17,5 +17,5 @@ app.use('/auth',authRoute)
 
 
 app.listen(8800, () => {
-  console.log("running");
+  console.log("running..");
 });
