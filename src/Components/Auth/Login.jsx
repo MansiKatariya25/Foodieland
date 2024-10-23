@@ -1,12 +1,40 @@
 import React, { useState } from "react";
 import Navbar from "../Common/Navbar";
 import Footer from "../Common/Footer";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+import { api } from "../../utils/api";
 
 function Login() {
-  const [email, setEmail] = useState(null);
-  const [pass, setPass] = useState(null);
-  const handleSubmit = () => {};
+  const [email, setEmail] = useState("");
+  const [pass, setPass] = useState("");
+  const navigate = useNavigate();
+
+  const handleLogin = async (event) => {
+    event.preventDefault();
+    
+    try {
+      const response = await axios.post(`${api}auth/login`, {
+        email: email,
+        pass: pass,
+      });
+
+      if (response.status == 200) {
+        console.log(response.data);
+        navigate("/");
+      }
+    } catch (error) {
+      if (error.status == 401) {
+        alert("invalid password");
+      }
+      if (error.status == 503) {
+        alert(error);
+      }
+      if(error.status == 404){
+        alert("User does not exist")
+      }
+    }
+  }
 
   return (
     <>
@@ -18,7 +46,7 @@ function Login() {
           </h1>
           <div className="w-full max-w-md mx-auto md:max-w-sm md:px-0 md:w-96 sm:px-4">
             <div className="flex flex-col"></div>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleLogin}>
               <div className="mt-4 space-y-6">
                 <div className="col-span-full">
                   <label className="block mb-3 text-sm font-medium text-gray-600">

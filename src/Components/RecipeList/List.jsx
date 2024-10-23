@@ -98,7 +98,6 @@ function List() {
                 </button>
               </div>
             </div>
-        
           );
         })
       ) : (

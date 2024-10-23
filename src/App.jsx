@@ -16,9 +16,6 @@ function App() {
   const [thisRecipe, setThis] = useState(null);
 
 
-  
-
-
   useEffect(() => {
     const getRecipe = async () => {
       try {
@@ -36,7 +33,7 @@ function App() {
       try {
         const response = await axios.get(`${api}getCategory`);
         setdataCat(response.data);
-        // console.log(data);
+        
       } catch (error) {
         console.log(error);
       }
