@@ -3,6 +3,7 @@ import { DataProvider } from "../../App";
 import { useNavigate } from "react-router-dom";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import Progress from '../Common/Progress';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -101,7 +102,7 @@ function List() {
           );
         })
       ) : (
-        <p>Loading....</p>
+        <Progress/>
       )}
     </div>
     </div>

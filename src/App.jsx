@@ -7,6 +7,7 @@ import { api } from "./utils/api";
 import RecipeList from "./Components/RecipeList/RecipeList";
 import Login from "./Components/Auth/Login";
 import Signup from "./Components/Auth/Signup";
+import Progress from "./Components/Common/Progress";
 
 
 export const DataProvider = createContext();
@@ -14,6 +15,7 @@ function App() {
   const [dataRec, setdataRec] = useState(null);
   const [dataCat, setdataCat] = useState(null);
   const [thisRecipe, setThis] = useState(null);
+  const [isLoading,setLoading] = useState(true)
 
 
   useEffect(() => {
@@ -41,6 +43,16 @@ function App() {
     getCategory();
   }, []);
 
+  useEffect(()=>{
+   setTimeout(()=>{
+     setLoading(false)
+   },1500)
+  },[dataRec])
+if(isLoading){
+  return (
+    <Progress/>
+  )
+}
   return (
     <>
       <DataProvider.Provider value={{ dataRec, dataCat, setThis, thisRecipe }}>

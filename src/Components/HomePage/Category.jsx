@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { DataProvider } from "../../App";
+import Progress from "../Common/Progress";
 
 function Category() {
   gsap.registerPlugin(ScrollTrigger);
@@ -51,7 +52,7 @@ function Category() {
             );
           })
         ) : (
-          <p>Loading....</p>
+          <Progress/>
         )}
       </div>
     </div>
