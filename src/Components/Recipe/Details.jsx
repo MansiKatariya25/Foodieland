@@ -1,103 +1,123 @@
-import React, { useContext, useState } from "react";
-import { useLocation, useParams } from "react-router-dom";
+import React, { useContext } from "react";
+import { useParams } from "react-router-dom";
 import { DataProvider } from "../../App";
 
 function Details() {
-  const {id} = useParams()
-  const {dataRec,setThis} = useContext(DataProvider)
-  const thisRecipe = dataRec?dataRec.filter((value, index) => {
-    return value._id==id?value:''
-  }):''
+  const { id } = useParams();
+  const { dataRec, setThis } = useContext(DataProvider);
 
-  const data = thisRecipe?thisRecipe[0] :''
-  setThis(data)
+  const recipe = dataRec?.find((item) => item._id === id);
+  setThis(recipe || null);
+
+  if (!recipe) return null;
 
   return (
-    <div className="font-Inter p-16 flex flex-col justify-between">
-      <div className="">
-        <p className="text-5xl mt-10 font-bold">{data?data.title:''}</p>
-        <div className="w-[100vw] flex justify-between mt-10 ">
-          <div className="flex justify-between w-[60%]">
-            <div className="flex w-[20%]">
-              <img src="/logos/man.svg" width={"50px"} />
-              <div className="text-sm ml-2 flex flex-col justify-center ">
-                <h2>John Smith</h2>
-                <h2>15 March 2022</h2>
-              </div>
-            </div>
-            <div className="flex">
-              <img src="/logos/Timer.svg" width={"30px"} />
-              <div className="flex flex-col ml-2 justify-center">
-                <p className="text-sm">PREP TIME</p>
-                <p className="text-sm">{data?data.time:''}</p>
-              </div>
-            </div>
-            <div className="flex">
-              <img src="/logos/Timer.svg" width={"30px"} />
-              <div className="flex flex-col ml-2 justify-center">
-                <p className="text-sm">COOK TIME</p>
-                <p className="text-sm">{data?data.time:''}</p>
-              </div>
-            </div>
-            <div className="flex">
-              <img src="/logos/Knife.svg" width={"30px"} />
-              <div className="flex flex-col ml-2 justify-center">
-                <p className="text-sm">{data?data.name:''}</p>
-              </div>
+    <div className="font-Inter p-4 sm:px-8 md:px-12 lg:p-16 pt-20 sm:pt-24 ">
+      {/* Title */}
+      <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mt-10">
+        {recipe.title}
+      </h1>
+
+      {/* Meta row */}
+      <div className="flex flex-col lg:flex-row lg:justify-between gap-4 mt-6">
+        {/* Left group */}
+        <div className="flex flex-wrap gap-x-6 gap-y-3 text-sm">
+          {/* Author */}
+          <div className="flex items-center gap-2">
+            <img src="/logos/man.svg" alt="" className="w-10 h-10 rounded-full" />
+            <div>
+              <p className="font-semibold">John Smith</p>
+              <p className="text-gray-500">15 March 2022</p>
             </div>
           </div>
-          <div className="w-[40%] flex justify-center p-2">
-            <div className="flex flex-col items-center ">
-            <img src="/logos/print.svg" alt="" className="p-4 bg-[#E7FAFE] rounded-full w-[60px] h-[60px] mx-4" />
-            <p className="text-[10px] my-4">PRINT</p>
+
+          {/* Prep */}
+          <div className="flex items-center gap-2">
+            <img src="/logos/Timer.svg" alt="" className="w-6 h-6" />
+            <div>
+              <p className="text-gray-500">PREP TIME</p>
+              <p>{recipe.time}</p>
             </div>
-            <div className="flex flex-col items-center">
-            <img src="/logos/share.svg" alt="" className="p-4 bg-[#E7FAFE] rounded-full w-[60px] h-[60px] mx-4" />
-            <p className="text-[10px] my-4">SHARE</p>
+          </div>
+
+          {/* Cook */}
+          <div className="flex items-center gap-2">
+            <img src="/logos/Timer.svg" alt="" className="w-6 h-6" />
+            <div>
+              <p className="text-gray-500">COOK TIME</p>
+              <p>{recipe.time}</p>
             </div>
-            
+          </div>
+
+          {/* Difficulty */}
+          <div className="flex items-center gap-2">
+            <img src="/logos/Knife.svg" alt="" className="w-6 h-6" />
+            <p>{recipe.name}</p>
           </div>
         </div>
 
-        <div className="mt-10 flex justify-evenly h-[90vh] w-[98vw]">
-          <div className="w-[60%]">
-            <img src="/logos/imag.png" className="rounded-3xl h-[100%]" />
-          </div>
-          <div className="bg-[#E7FAFE] w-[30%] h-[100%] rounded-3xl p-8 flex flex-col ">
-            <p className="text-2xl font-bold"> Nutrition Information</p>
-            <div className="flex justify-between my-6">
-              <p>Calories</p>
-              <p>{data?data.nutrition[0].Calories+" Kcal":''}</p>
+        {/* Print / Share */}
+        <div className="flex gap-4">
+          {["print", "share"].map((icon) => (
+            <div
+              key={icon}
+              className="flex flex-col items-center gap-1 text-xs text-gray-600"
+            >
+              <img
+                src={`/logos/${icon}.svg`}
+                alt={icon}
+                className="w-12 h-12 bg-[#E7FAFE] rounded-full p-3"
+              />
+              <span>{icon.toUpperCase()}</span>
             </div>
-            <hr />
-            <div className="flex justify-between my-4">
-              <p>Total Fat</p>
-              <p>{data?data.nutrition[0].TotalFat+" g ":''}</p>
-            </div>
-            <hr />
-            <div className="flex justify-between my-4">
-              <p>Protein</p>
-              <p>{data?data.nutrition[0].Protein+" g ":''}</p>
-            </div>
-            <hr />
-            <div className="flex justify-between my-4">
-              <p>Carbohydrate</p>
-              <p>{data?data.nutrition[0].Carbohydrate+" g":''}</p>
-            </div>
-            <hr />
-            <div className="flex justify-between my-4">
-              <p>Cholesterol</p>
-              <p>{data?data.nutrition[0].Cholesterol+" mg":''}</p>
-            </div>
-            <hr />
-            <p className="my-32 text-center text-gray-500">
-              adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-              dolore magna aliqua.{" "}
-            </p>
-          </div>
+          ))}
         </div>
       </div>
-      <p className="text-left my-16 p-4 text-gray-500">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+      {/* Image + Nutrition */}
+      <div className="flex flex-col lg:flex-row gap-6 lg:gap-8 mt-10">
+        {/* Image */}
+        <div className="w-full lg:w-3/5">
+          <img
+            src={recipe.image || "/logos/imag.png"}
+            alt={recipe.title}
+            className="rounded-3xl w-full h-auto aspect-video object-cover"
+          />
+        </div>
+
+        {/* Nutrition */}
+        <div className="w-full lg:w-2/5 bg-[#E7FAFE] rounded-3xl p-6 lg:p-8">
+          <h2 className="text-xl lg:text-2xl font-bold mb-4">
+            Nutrition Information
+          </h2>
+          {["Calories", "TotalFat", "Protein", "Carbohydrate", "Cholesterol"].map(
+            (key) => (
+              <React.Fragment key={key}>
+                <div className="flex justify-between py-2">
+                  <span>{key.replace(/([A-Z])/g, " $1")}</span>
+                  <span>
+                    {recipe.nutrition?.[0]?.[key]}{" "}
+                    {key === "Calories" ? "Kcal" : key === "Cholesterol" ? "mg" : "g"}
+                  </span>
+                </div>
+                <hr />
+              </React.Fragment>
+            )
+          )}
+          <p className="mt-6 text-sm text-gray-500 text-center">
+            Adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+            magna aliqua.
+          </p>
+        </div>
+      </div>
+
+      {/* Description */}
+      <p className="mt-10 text-gray-600 leading-relaxed">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+        commodo consequat.
+      </p>
     </div>
   );
 }

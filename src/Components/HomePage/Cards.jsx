@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import { DataProvider } from "../../App";
 import { useNavigate } from "react-router-dom";
 import gsap from "gsap";
@@ -13,16 +13,14 @@ function Cards() {
   const handlePageChange = (id) => {
     useNav(`/recipe/${id}`);
   };
- 
+
   const cardRef = useRef([]);
   useEffect(() => {
     cardRef.current.forEach((ref, index) => {
       if (ref) {
         gsap.fromTo(
           ref,
-          {
-            opacity: 0,
-          },
+          { opacity: 0 },
           {
             opacity: 1,
             duration: 4,
@@ -40,51 +38,54 @@ function Cards() {
   }, [dataRec]);
 
   return (
-    <div className="p-20 h-[180vh] font-Inter mt-[5%]">
-      <div className="">
-        <div className="flex flex-col justify-center items-center">
-          <p className="text-6xl font-bold">Simple and tasty recipes</p>
-          <p className=" flex text-lg w-[60%] text-center pt-3 text-slate-400">
-            Lorem ipsum dolor sit amet, consectetuipisicing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqut enim ad minim{" "}
-          </p>
-        </div>
+    <div className="p-6 sm:p-10 md:p-20 min-h-screen font-Inter mt-24 md:mt-[5%] sm:mt-[40vh]">
+      <div className="flex flex-col justify-center items-center text-center">
+        <p className="text-3xl sm:text-4xl md:text-6xl font-bold">
+          Simple and tasty recipes
+        </p>
+        <p className="text-sm sm:text-base md:text-lg w-full md:w-[60%] pt-3 text-slate-400">
+          Lorem ipsum dolor sit amet, consectetuipisicing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqut enim ad minim
+        </p>
       </div>
-      <div  className="flex flex-wrap justify-evenly w-[90vw] h-[100vh]">
+
+      <div className="flex flex-wrap justify-center md:justify-evenly gap-6 w-full mt-10">
         {dataRec ? (
-          dataRec.map((items, i) => {
-            return i <= 5 ? (
-              <div ref={(el) => (cardRef.current[i] = el)}
-                className="bg-[#E7FAFE] w-[26%] h-[55%] rounded-3xl flex flex-col justify-between cursor-pointer mt-[5%] p-4 transition-all ease-in-out duration-300 hover:scale-105 "
-                key={i}
-                onClick={() => handlePageChange(items._id)}
-              >
-                <div className="w-[21vw]">
-                  <img src={items.image} className="rounded-3xl" />
-                  <img
-                    src="/logos/like.png"
-                    width={"30px"}
-                    className=" absolute translate-x-[18vw] -translate-y-[27vh]"
-                  />
-                  <div>
-                    <p className="text-xl font-bold pt-4">{items.title}</p>
-                  </div>
-                </div>
-                <div className="flex justify-between w-[65%] text-sm">
-                  <button className="bg-white rounded-full p-2 w-[55%] ">
-                    {items.time}
-                  </button>
-                  <button className="bg-white rounded-full p-2 w-[40%]">
-                    {items.name}
-                  </button>
-                </div>
+          dataRec.slice(0, 6).map((items, i) => (
+            <div
+              key={i}
+              ref={(el) => (cardRef.current[i] = el)}
+              className="bg-[#E7FAFE] w-full sm:w-[45%] md:w-[30%] lg:w-[26%] h-[300px] sm:h-[350px] md:h-[55vh] rounded-3xl flex flex-col justify-between cursor-pointer p-4 transition-all ease-in-out duration-300 hover:scale-105"
+              onClick={() => handlePageChange(items._id)}
+            >
+              <div className="w-full">
+                <img
+                  src={items.image}
+                  alt={items.title}
+                  className="rounded-3xl w-full h-32 sm:h-40 md:h-auto object-cover"
+                />
+                <img
+                  src="/logos/like.png"
+                  width={30}
+                  className="absolute top-4 right-4"
+                />
+                <p className="text-base sm:text-lg md:text-xl font-bold pt-2 md:pt-4">
+                  {items.title}
+                </p>
               </div>
-            ) : (
-              " "
-            );
-          })
+
+              <div className="flex justify-between text-xs sm:text-sm mt-2">
+                <button className="bg-white rounded-full p-2 w-[55%]">
+                  {items.time}
+                </button>
+                <button className="bg-white rounded-full p-2 w-[40%]">
+                  {items.name}
+                </button>
+              </div>
+            </div>
+          ))
         ) : (
-          <Progress/>
+          <Progress />
         )}
       </div>
     </div>

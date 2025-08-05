@@ -12,7 +12,7 @@ function Login() {
 
   const handleLogin = async (event) => {
     event.preventDefault();
-    
+
     try {
       const response = await axios.post(`${api}auth/login`, {
         email: email,
@@ -30,7 +30,7 @@ function Login() {
       if (error.status == 503) {
         alert(error);
       }
-      if(error.status == 404){
+      if (error.status == 404) {
         alert("User does not exist")
       }
     }
@@ -38,9 +38,8 @@ function Login() {
 
   return (
     <>
-      <Navbar />
-      <div className="authBg w-[100vw] h-[90vh] flex flex-col justify-evenly items-center font-Inter  mb-10">
-        <div className="bg-white relative items-center w-[50%] mt-28 shadow-lg rounded-lg px-5 py-12 mx-auto md:px-12 lg:px-20 max-w-7xl">
+      <div className="authBg w-full min-h-screen flex flex-col justify-center items-center font-Inter px-4 py-12">
+        <div className="bg-white shadow-lg rounded-lg px-6 py-12 w-full max-w-md md:max-w-lg lg:max-w-xl">
           <h1 className="text-3xl font-Lobster text-center p-4">
             Login Now to explore tasty recipe's and foodie's around you!
           </h1>
@@ -100,8 +99,6 @@ function Login() {
           </div>
         </div>
       </div>
-
-      <Footer />
     </>
   );
 }

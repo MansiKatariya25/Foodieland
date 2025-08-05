@@ -1,6 +1,4 @@
- 
-
-const mongoose = require("mongoose");
+ const mongoose = require("mongoose");
 
 const recipe = new mongoose.Schema({
     image:String,

@@ -31,9 +31,8 @@ function Signup() {
 
   return (
     <>
-      <Navbar />
-      <div className="authBg w-[100vw] h-[90vh] flex flex-col justify-evenly items-center  font-Inter mb-10">
-        <div className="bg-white relative items-center w-[50%] mt-28 shadow-lg rounded-lg px-5 py-12 mx-auto md:px-12 lg:px-20 max-w-7xl">
+      <div className="authBg w-full min-h-screen flex flex-col justify-center items-center font-Inter px-4 pt-20">
+        <div className="bg-white shadow-lg rounded-lg px-6 py-12 w-full max-w-md md:max-w-lg lg:max-w-xl">
           <h1 className="text-3xl font-Lobster text-center p-4">
             Welcome To FoodieLand! Signup Now to explore tasty recipe's and
             foodie's around you!
@@ -94,8 +93,6 @@ function Signup() {
           </div>
         </div>
       </div>
-
-      <Footer />
     </>
   );
 }
